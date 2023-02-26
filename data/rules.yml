@@ -1,0 +1,27 @@
+version: "3.1"
+rules:
+- rule: say_hello
+  steps:
+  - intent: greeting
+  - action: utter_greet
+
+- rule: say_goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_bye
+
+- rule: start_questionaire
+  steps:
+  - intent: accept
+  - action: utter_start
+
+- rule: abort_questionnaire
+  steps:
+  - intent: decline
+  - action: utter_abort
+
+- rule: indepth_suicidal
+  steps:
+  - intent: suicidal_thoughts
+  - action: utter_indepth_suicidal
+

@@ -1,0 +1,120 @@
+version: "3.1"
+
+nlu:
+- intent: greeting
+  examples: |
+    - hey
+    - hello
+    - hi
+    - good morning
+    - good evening
+    - good afternoon
+    - hey there
+    - heya
+    - mornin
+    - howdy
+    - gday
+    - cheers
+    - whats up
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you later
+    - cu
+    - farewell
+    - so long
+    - take care
+    - have a good one
+    - have a nice day
+    - see you around
+
+- intent: accept
+  examples: |
+    - yes
+    - yeah
+    - sure
+    - of course
+    - sounds good
+
+- intent: decline
+  examples: |
+    - no
+    - no way
+    - hell no
+    - not really
+
+- intent: sleep disorders
+  examples: |
+    - difficulty sleeping
+    - no sleep
+    - loss of sleep
+    - sleeplessness
+    - wakefulness
+    - insomnia
+    - lie awake
+    - restlessness
+    - could not sleep
+    - tough night
+
+- intent: suicidal thoughts
+  examples: |
+    - considering suicide
+    - death wish
+    - end my life
+    - kill myself
+    - taking an overdose
+    - committing suicide
+    - ending my life
+    - jump off the bridge
+
+- intent: guilt
+  examples: |
+    - i feel guilty
+    - very guilty
+
+- intent: anxiety
+  examples: |
+    - every day is so stressful
+    - i get stressed quickly
+
+- intent: loss of interest
+  examples: |
+    - no more fun
+    - do not like it anymore
+    - do not care anymore
+    - used to love
+    - used to like
+    - used to do
+
+- intent: loss of appetite
+  examples: |
+    - not hungry
+    - food does not taste well
+    - lost a lot of weight
+    - lost my appetite
+    - not want to eat
+
+- intent: diffuse physical complaints
+  examples: |
+    - in pain all the time
+    - feel pain everyday
+
+- intent: performance drop
+  examples: |
+    - difficult to work
+    - get tired quickly
+    - feel weak 
+    - general weakness
+    - bad feelings
+    - low self-esteem
+    - negative thoughts
+    - difficult job
+    - issue qith my colleagues
+    - difficult tasks
+    - bad concentration
+    - lose focus
+    - stressful job
+    - cannot focus
+

@@ -1,0 +1,17 @@
+version: "3.1"
+stories:
+- story: indepth_performance
+  steps:
+  - intent: performance_drop
+  - action: utter_indepth_performance_1
+  - action: utter_wait_for_answer
+  - action: utter_indepth_performance_2
+  - action: utter_wait_for_answer
+  - action: utter_indepth_performance_3
+
+- story: indepth_sleep
+  steps:
+  - intent: sleep_disorders
+  - action: utter_indepth_sleep_1
+  - action: utter_wait_for_answer
+  - action: utter_indepth_sleep_2

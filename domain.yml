@@ -1,0 +1,38 @@
+version: "3.1"
+
+intents:
+  - greeting
+  - goodbye
+  - accept
+  - decline
+  - sleep_disorders
+  - suicidal_thoughts
+  - guilt
+  - anxiety
+  - loss_of_interest
+  - loss_of_appetite
+  - diffuse_physical_complaints
+  - performance_drop
+
+actions:
+  - utter_start
+  - utter_abort
+  - utter_indepth_suicidal
+  - utter_indepth_performance_1
+  - utter_indepth_performance_2
+  - utter_indepth_performance_3
+  - utter_indepth_sleep_1
+  - utter_indepth_sleep_2
+  - utter_wait_for_answer
+  - utter_default
+
+responses:
+  utter_greet:
+  - text: "Hi, may I ask you some questions?"
+  - text: "Hi, would you allow me to ask you some personal questions?"
+  - text: "Hello, may I ask you some questions?"
+  utter_bye:
+  - text: "Thank you for talking to me today."
+  - text: "Have a nice day"
+  utter_default:
+  - text: "Hi, may I ask you some questions?"

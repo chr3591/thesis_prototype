@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Depression Chatbot</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/chatbot.css') }}">
+<script src="{{ url_for('static',filename='bundle.js') }}"> </script>
+</head>
+<body>
+    <div id="container" class="container">
+         <div id="chat-window" class="chat-window">
+          <div id="messages" class="messages"><p class="from-bot">Hi, may I ask you some questions?</p></div>
+          <div><button id="download" onclick="download_protocol()">Save Protocol</button>
+          <input id="input" type="text" placeholder="Enter your answer here..." autocomplete="off" autofocus="true"/></div>
+        </div>
+    </div>
+</body>
+<script src="{{ url_for('static',filename='communication.js') }}"> </script>
+</html>

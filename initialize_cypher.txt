@@ -1,0 +1,213 @@
+CREATE ( x:Illness { Name: "Depression" })
+
+CREATE ( s01:Symptom { Name: "Performance drop", Class: "Main" })
+CREATE ( s02:Symptom { Name: "General listlessness", Class: "Main"  })
+CREATE ( s03:Symptom { Name: "Loss of interest", Class: "Main"  })
+CREATE ( s04:Symptom { Name: "Anxiety", Class: "Additional"  })
+CREATE ( s05:Symptom { Name: "Special indifference", Class: "Additional" })
+CREATE ( s06:Symptom { Name: "Inability to make decisions", Class: "Additional" })
+CREATE ( s07:Symptom { Name: "Pessimistic future perspective", Class: "Additional" })
+CREATE ( s08:Symptom { Name: "Guilt", Class: "Additional" })
+CREATE ( s09:Symptom { Name: "Sleep disorders", Class: "Additional" })
+CREATE ( s10:Symptom { Name: "Loss of appetite", Class: "Additional" })
+CREATE ( s11:Symptom { Name: "Diffuse physical complaints", Class: "Additional" })
+CREATE ( s12:Symptom { Name: "Suicidal thoughts", Class: "Additional" })
+
+MATCH (s:Symptom),(x:Illness)
+CREATE (s)-[r:IS_SYMPTOM_OF]->(x)
+RETURN s,r,x
+
+CREATE ( q01:Question {Name: "Standard question 1", Text:"How long have you felt weak?", Order: 1, Required: true})
+CREATE ( q02:Question {Name: "Standard question 2", Text:"How's your sleep?", Order: 2, Required: true})
+CREATE ( q03:Question {Name: "Standard question 3", Text:"How are you doing with hobbies, interests, friends?", Order: 3, Required: true})
+CREATE ( q04:Question {Name: "Standard question 4", Text:"Have you ever had suicidal thoughts?", Order: 4, Required: true})
+CREATE ( q05:Question {Name: "Standard question 5", Text:"How's your appetite?", Order: 5, Required: true})
+CREATE ( q06:Question {Name: "Standard question 6", Text:"Do you have any other physical suffering?", Order: 6, Required: true})
+CREATE ( q07:Question {Name: "Standard question 7", Text:"How are you doing at your place of work?", Order: 7, Required: true})
+CREATE ( q08:Question {Name: "Standard question 8", Text:"Are you in a partnership?", Order: 8, Required: true})
+CREATE ( q09:Question {Name: "Standard question 9", Text:"Does anyone in your family have depression?", Order: 9, Required: true})
+CREATE ( q10:Question {Name: "Standard question 10", Text:"Do you drink alcohol?", Order: 10, Required: true})
+CREATE ( q11:Question {Name: "Standard question 11", Text:"Are you taking any medicines?", Order: 11, Required: true})
+
+CREATE ( idq1:InDepthQuestion {Name: "InDepth 1", Text:"What was the mood like before?", Order: 1})
+CREATE ( idq2:InDepthQuestion {Name: "InDepth 2", Text:"Do you know that bad feeling – like you feel right now?", Order: 2})
+CREATE ( idq3:InDepthQuestion {Name: "InDepth 3", Text:"Were there also phases in which you felt exceptionally well without knowing exactly why?", Order: 3})
+CREATE ( idq4:InDepthQuestion {Name: "InDepth 4", Text:"What time do you wake up in the morning?", Order: 1})
+CREATE ( idq5:InDepthQuestion {Name: "InDepth 5", Text:"Are there any daily fluctuations in your mood?", Order: 2})
+CREATE ( idq6:InDepthQuestion {Name: "InDepth 6", Text:"Have you already had specific suicidal ideas, i.e. thoughts on how you could take your own life?", Order: 1})
+CREATE ( idq8:InDepthQuestion {Name: "InDepth 8", Text:"Have you ever been in psychotherapy?", Order: 2})
+CREATE ( idq7:InDepthQuestion {Name: "InDepth 7", Text:"What is so stressful about work?", Order: 1})
+
+MATCH (s:Symptom),(q:Question)
+WHERE s.Name = "Performance drop" AND q.Order = 1
+CREATE (q)-[r:IS_QUESTION_ABOUT]->(s)
+RETURN s,r,q
+
+MATCH (s:Symptom),(q:Question)
+WHERE s.Name = "Sleep disorders" AND q.Order = 2
+CREATE (q)-[r:IS_QUESTION_ABOUT]->(s)
+RETURN s,r,q
+
+MATCH (s:Symptom),(q:Question)
+WHERE s.Name = "Loss of interest" AND q.Order = 3
+CREATE (q)-[r:IS_QUESTION_ABOUT]->(s)
+RETURN s,r,q
+
+MATCH (s:Symptom),(q:Question)
+WHERE s.Name = "Loss of interest" AND q.Order = 8
+CREATE (q)-[r:IS_QUESTION_ABOUT]->(s)
+RETURN s,r,q
+
+MATCH (s:Symptom),(q:Question)
+WHERE s.Name = "Loss of interest" AND q.Order = 9
+CREATE (q)-[r:IS_QUESTION_ABOUT]->(s)
+RETURN s,r,q
+
+MATCH (s:Symptom),(q:Question)
+WHERE s.Name = "Suicidal thoughts" AND q.Order = 4
+CREATE (q)-[r:IS_QUESTION_ABOUT]->(s)
+RETURN s,r,q
+
+MATCH (s:Symptom),(q:Question)
+WHERE s.Name = "Loss of appetite" AND q.Order = 5
+CREATE (q)-[r:IS_QUESTION_ABOUT]->(s)
+RETURN s,r,q
+
+MATCH (s:Symptom),(q:Question)
+WHERE s.Name = "Diffuse physical complaints" AND q.Order = 6
+CREATE (q)-[r:IS_QUESTION_ABOUT]->(s)
+RETURN s,r,q
+
+MATCH (s:Symptom),(q:Question)
+WHERE s.Name = "Diffuse physical complaints" AND q.Order = 10
+CREATE (q)-[r:IS_QUESTION_ABOUT]->(s)
+RETURN s,r,q
+
+MATCH (s:Symptom),(q:Question)
+WHERE s.Name = "Diffuse physical complaints" AND q.Order = 11
+CREATE (q)-[r:IS_QUESTION_ABOUT]->(s)
+RETURN s,r,q
+
+MATCH (s:Symptom),(q:Question)
+WHERE s.Name = "Performance drop" AND q.Order = 7
+CREATE (q)-[r:IS_QUESTION_ABOUT]->(s)
+RETURN s,r,q
+
+MATCH (idq:InDepthQuestion),(q:Question)
+WHERE idq.Name = "InDepth 1" AND q.Order = 1
+CREATE (idq)-[r:BELONGS_TO]->(q)
+RETURN idq,r,q
+
+MATCH (idq:InDepthQuestion),(q:Question)
+WHERE idq.Name = "InDepth 2" AND q.Order = 1
+CREATE (idq)-[r:BELONGS_TO]->(q)
+RETURN idq,r,q
+
+MATCH (idq:InDepthQuestion),(q:Question)
+WHERE idq.Name = "InDepth 3" AND q.Order = 1
+CREATE (idq)-[r:BELONGS_TO]->(q)
+RETURN idq,r,q
+
+MATCH (idq:InDepthQuestion),(q:Question)
+WHERE idq.Name = "InDepth 4" AND q.Order = 2
+CREATE (idq)-[r:BELONGS_TO]->(q)
+RETURN idq,r,q
+
+MATCH (idq:InDepthQuestion),(q:Question)
+WHERE idq.Name = "InDepth 5" AND q.Order = 2
+CREATE (idq)-[r:BELONGS_TO]->(q)
+RETURN idq,r,q
+
+MATCH (idq:InDepthQuestion),(q:Question)
+WHERE idq.Name = "InDepth 6" AND q.Order = 4
+CREATE (idq)-[r:BELONGS_TO]->(q)
+RETURN idq,r,q
+
+MATCH (idq:InDepthQuestion),(q:Question)
+WHERE idq.Name = "InDepth 7" AND q.Order = 7
+CREATE (idq)-[r:BELONGS_TO]->(q)
+RETURN idq,r,q
+
+MATCH (idq:InDepthQuestion),(q:Question)
+WHERE idq.Name = "InDepth 8" AND q.Order = 4
+CREATE (idq)-[r:BELONGS_TO]->(q)
+RETURN idq,r,q
+
+CREATE ( i01:Intent { Name: "sleep disorders", hidden_value: "sleep disorders?" })
+CREATE ( i02:Intent { Name: "suicidal thoughts", hidden_value: "suicidal thoughts?" })
+CREATE ( i03:Intent { Name: "guilt", hidden_value: "guilt?" })
+CREATE ( i04:Intent { Name: "anxiety", hidden_value: "anxiety?" })
+CREATE ( i05:Intent { Name: "loss of interest", hidden_value: "loss of interest?" })
+CREATE ( i06:Intent { Name: "loss of appetite", hidden_value: "loss of appetite?" })
+CREATE ( i07:Intent { Name: "diffuse physical complaints", hidden_value: "diffuse physical complaints?" })
+CREATE ( i08:Intent { Name: "performance drop", hidden_value: "performance drop?" })
+CREATE ( i09:Intent { Name: "pessimistic future", hidden_value: "pessimistic future?" })
+CREATE ( i10:Intent { Name: "general listlessness", hidden_value: "general listlessness?" })
+CREATE ( i11:Intent { Name: "special indifference", hidden_value: "special indifference?" })
+CREATE ( i12:Intent { Name: "bad decision making", hidden_value: "bad decision making?" })
+
+MATCH (s:Symptom),(i:Intent)
+WHERE s.Name = "Performance drop" AND i.Name = "performance drop"
+CREATE (i)-[r:IS_INTENT_OF]->(s)
+RETURN s,r,i
+
+MATCH (s:Symptom),(i:Intent)
+WHERE s.Name = "Suicidal thoughts" AND i.Name = "suicidal thoughts"
+CREATE (i)-[r:IS_INTENT_OF]->(s)
+RETURN s,r,i
+
+MATCH (s:Symptom),(i:Intent)
+WHERE s.Name = "Guilt" AND i.Name = "guilt"
+CREATE (i)-[r:IS_INTENT_OF]->(s)
+RETURN s,r,i
+
+MATCH (s:Symptom),(i:Intent)
+WHERE s.Name = "Anxiety" AND i.Name = "anxiety"
+CREATE (i)-[r:IS_INTENT_OF]->(s)
+RETURN s,r,i
+
+MATCH (s:Symptom),(i:Intent)
+WHERE s.Name = "Loss of interest" AND i.Name = "loss of interest"
+CREATE (i)-[r:IS_INTENT_OF]->(s)
+RETURN s,r,i
+
+MATCH (s:Symptom),(i:Intent)
+WHERE s.Name = "Loss of appetite" AND i.Name = "loss of appetite"
+CREATE (i)-[r:IS_INTENT_OF]->(s)
+RETURN s,r,i
+
+MATCH (s:Symptom),(i:Intent)
+WHERE s.Name = "Sleep disorders" AND i.Name = "sleep disorders"
+CREATE (i)-[r:IS_INTENT_OF]->(s)
+RETURN s,r,i
+
+MATCH (s:Symptom),(i:Intent)
+WHERE s.Name = "Diffuse physical complaints" AND i.Name = "diffuse physical complaints"
+CREATE (i)-[r:IS_INTENT_OF]->(s)
+RETURN s,r,i
+
+MATCH (s:Symptom),(i:Intent)
+WHERE s.Name = "Pessimistic future perspective" AND i.Name = "pessimistic future"
+CREATE (i)-[r:IS_INTENT_OF]->(s)
+RETURN s,r,i
+
+MATCH (s:Symptom),(i:Intent)
+WHERE s.Name = "General listlessness" AND i.Name = "general listlessness"
+CREATE (i)-[r:IS_INTENT_OF]->(s)
+RETURN s,r,i
+
+MATCH (s:Symptom),(i:Intent)
+WHERE s.Name = "Special indifference" AND i.Name = "special indifference"
+CREATE (i)-[r:IS_INTENT_OF]->(s)
+RETURN s,r,i
+
+MATCH (s:Symptom),(i:Intent)
+WHERE s.Name = "Inability to make decisions" AND i.Name = "bad decision making"
+CREATE (i)-[r:IS_INTENT_OF]->(s)
+RETURN s,r,i
+
+Match (n)-[r]->(m)
+Return n,r,m
+
+MATCH (n)
+DETACH DELETE n
